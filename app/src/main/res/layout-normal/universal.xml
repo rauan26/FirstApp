@@ -220,6 +220,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/style_img_universal"
                     android:src="@drawable/imgtest" />
+
                 <ImageView
                     android:id="@+id/img_right"
                     android:layout_width="match_parent"

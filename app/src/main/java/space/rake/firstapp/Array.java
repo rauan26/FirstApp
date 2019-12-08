@@ -15,7 +15,7 @@ public class Array {
             R.drawable.onelevel_eight,
             R.drawable.onelevel_nine,
     };
-    final int[] power1={0,1,2,3,4,5,6,7,8,9,};
+    final int[] p1={0,1,2,3,4,5,6,7,8,9,};
     // масивы для фото-конец
 
     final int[] asd={
@@ -30,6 +30,7 @@ public class Array {
             R.string.lvl1text8,
             R.string.lvl1text9,
     };
+
 
 
 }

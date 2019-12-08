@@ -7,14 +7,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class level2 extends AppCompatActivity {
+public class game extends AppCompatActivity {
 
     ImageView iv_dice_p1, iv_dice_p2, iv_lives_p1, iv_lives_p2;
     TextView tv_player1, tv_player2;
@@ -28,7 +27,7 @@ public class level2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level2);
+        setContentView(R.layout.blankaempty);
 
         r=new Random();
 
@@ -54,42 +53,31 @@ public class level2 extends AppCompatActivity {
         iv_dice_p1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rolledP1=r.nextInt(6)+1;
-                setDiceImage(rolledP1, iv_dice_p1);
-                iv_dice_p1.startAnimation(animation);
+             rolledP1=r.nextInt(6)+1;
+             setDiceImage(rolledP1, iv_dice_p1);
 
-                if(rolledP2!=0){
-                    tv_player1.setText("PLAYER 1 ROLL!");
-                    tv_player2.setText("PLAYER 2 ROLL!");
+             if(rolledP2!=0){
+                 tv_player1.setText("PLAYER 1 ROLL!");
+                 tv_player2.setText("PLAYER 2 ROLL!");
 
-                    if(rolledP1>rolledP2){
-                        livesP2--;
-                        setDiceImage(livesP2, iv_lives_p2);
+                 if(rolledP1>rolledP2){
+                     livesP2--;
+                     setDiceImage(livesP2, iv_lives_p2);
+                 }if (rolledP2>rolledP1){
+                     livesP1--;
+                     setDiceImage(livesP1, iv_lives_p1);
+                 }
 
-                        Toast.makeText(level2.this,"PLayer 1 WIN!", Toast.LENGTH_LONG).show();
-
-                    }if (rolledP2>rolledP1){
-                        livesP1--;
-                        setDiceImage(livesP1, iv_lives_p1);
-                        Toast.makeText(level2.this,"PLayer 2 WIN!", Toast.LENGTH_LONG).show();
-                    }
-                    if (rolledP2==rolledP1){
-                        Toast.makeText(level2.this,"Draw!", Toast.LENGTH_LONG).show();
-                    }
-
-                    rolledP1=0;
-                    rolledP2=0;
-
-                    iv_dice_p1.setEnabled(true);
-                    iv_dice_p2.setEnabled(true);
-
-                    //cheked game
-                    checkEndGame();
-                }
-                else{
-                    tv_player1.setText("PLAYER 1 ROLLED");
-                    iv_dice_p1.setEnabled(false);
-                }
+                 rolledP1=0;
+                 rolledP2=0;
+                 checkEndGame();
+                 iv_dice_p1.setEnabled(true);
+                 iv_dice_p2.setEnabled(true);
+             }
+             else{
+                 tv_player1.setText("PLAYER 1 ROLLED");
+                 iv_dice_p1.setEnabled(false);
+             }
             }
         });
 
@@ -98,7 +86,6 @@ public class level2 extends AppCompatActivity {
             public void onClick(View v) {
                 rolledP2=r.nextInt(6)+1;
                 setDiceImage(rolledP2, iv_dice_p2);
-                iv_dice_p2.startAnimation(animation);
 
                 if(rolledP1!=0){
                     tv_player1.setText("PLAYER 1 ROLL!");
@@ -106,26 +93,16 @@ public class level2 extends AppCompatActivity {
                     if(rolledP1>rolledP2){
                         livesP2--;
                         setDiceImage(livesP2, iv_lives_p2);
-
-                        Toast.makeText(level2.this,"PLayer 1 WIN!", Toast.LENGTH_LONG).show();
-
                     }if (rolledP2>rolledP1){
                         livesP1--;
                         setDiceImage(livesP1, iv_lives_p1);
-
-                        Toast.makeText(level2.this,"PLayer 2 WIN!", Toast.LENGTH_LONG).show();
-                    }
-                    if (rolledP2==rolledP1){
-                        Toast.makeText(level2.this,"Draw!", Toast.LENGTH_LONG).show();
                     }
 
                     rolledP1=0;
                     rolledP2=0;
-
+                    checkEndGame();
                     iv_dice_p1.setEnabled(true);
                     iv_dice_p2.setEnabled(true);
-                    //cheked game
-                    checkEndGame();
                 }
                 else{
                     tv_player2.setText("PLAYER 2 ROLLED");
@@ -135,42 +112,39 @@ public class level2 extends AppCompatActivity {
         });
     }
     private void setDiceImage(int dice, ImageView image){
-        switch (dice){
-            case 1:
-                image.setImageResource(R.drawable.dice1);
+          switch (dice){
+              case 1:
+                  image.setImageResource(R.drawable.dice1);
+                  image.startAnimation(animation);
+                  break;
+              case 2:
+                  image.setImageResource(R.drawable.dice2);
+                  image.startAnimation(animation);
+                  break;
+              case 3:
+                  image.setImageResource(R.drawable.dice3);
+                  image.startAnimation(animation);
+                  break;
+              case 4:
+                  image.setImageResource(R.drawable.dice4);
+                  image.startAnimation(animation);
+                  break;
+              case 5:
+                  image.setImageResource(R.drawable.dice5);
+                  image.startAnimation(animation);
+                  break;
+              case 6:
+                  image.setImageResource(R.drawable.dice6);
+                  image.startAnimation(animation);
+                  break;
 
-                break;
-            case 2:
-                image.setImageResource(R.drawable.dice2);
-
-                break;
-            case 3:
-                image.setImageResource(R.drawable.dice3);
-
-                break;
-            case 4:
-                image.setImageResource(R.drawable.dice4);
-
-                break;
-            case 5:
-                image.setImageResource(R.drawable.dice5);
-
-                break;
-            case 6:
-                image.setImageResource(R.drawable.dice6);
-
-                break;
-
-            default:
-                image.setImageResource(R.drawable.dice0);
-
-        }
+                  default:
+                      image.setImageResource(R.drawable.dice0);
+                      image.startAnimation(animation);
+          }
     }
     private void checkEndGame() {
         if(livesP1==0||livesP2==0){
-             iv_dice_p1.setEnabled(false);
-            iv_dice_p2.setEnabled(false);
-
             String text = "";
             if(livesP1!=0){
                 text="Game Over! Winner Player 1!";
@@ -191,6 +165,4 @@ public class level2 extends AppCompatActivity {
             alertDialog.show();
         }
     }
-
 }
-

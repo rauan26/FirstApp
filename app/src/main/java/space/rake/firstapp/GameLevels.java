@@ -48,6 +48,21 @@ public class GameLevels extends AppCompatActivity {
         });
 
         //кнопка для перехода на уревень - конец
+        // кнопка для перехода на 1 уревень -начало
+        TextView textView2=(TextView)findViewById(R.id.textView2);
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent= new Intent(GameLevels.this, level2.class);
+                    startActivity(intent);finish();
+                }catch (Exception e){
+                    //empty
+                }
+            }
+        });
+
+        //кнопка для перехода на уревень - конец
     }
     // Системный кнопка "Назад" - начало
     @Override
