@@ -14,9 +14,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 public class level1 extends AppCompatActivity {
 
     Dialog dialog;
+    Random r;
+    final int[] imgs2={
+            R.drawable.onelevel_zero,
+            R.drawable.onelevel_one,
+            R.drawable.onelevel_two,
+            R.drawable.onelevel_three,
+            R.drawable.onelevel_four,
+            R.drawable.onelevel_five,
+            R.drawable.onelevel_six,
+            R.drawable.onelevel_seven,
+            R.drawable.onelevel_eight,
+            R.drawable.onelevel_nine,
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +44,37 @@ public class level1 extends AppCompatActivity {
 
 
         // код коорый скругляет углы для img lift
-        ImageView img_left=(ImageView)findViewById(R.id.img_left);
+        final ImageView img_left=(ImageView)findViewById(R.id.img_left);
         img_left.setClipToOutline(true);
         //end
 
         //experiment
-         img_left.setImageDrawable(getResources().getDrawable(R.drawable.onelevel_eight));
+        // img_left.setImageDrawable(getResources().getDrawable(R.drawable.onelevel_eight));
+         r=new Random();
+
+         img_left.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 img_left.setImageResource(imgs2[r.nextInt(imgs2.length)]);
+             }
+         });
+
+
+
+         //end of experiment
+
 
         // код коорый скругляет углы для img right
         final ImageView img_right=(ImageView)findViewById(R.id.img_right);
         img_right.setClipToOutline(true);
         //end
-
+        //experiment
+        img_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img_right.setImageResource(imgs2[r.nextInt(imgs2.length)]);
+            }
+        });
         //развернуть игру на весь экран-начало
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS ,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
